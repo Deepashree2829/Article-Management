@@ -1,0 +1,44 @@
+Required Tools : Visual Studio code
+Required Packages : nodejs, angular/cli, node/modules, express(NodeJS)
+
+
+Angular Code :
+Refer the code which is in article-client folder for Angular.
+As we have little bit of knowledge on Angular we need to concentrate on NodeJS.
+
+NodeJS Code :
+Refer the code which is in article-server folder for NodeJS.
+Below are steps for NodeJS
+
+1. Create folder called -> article-server
+2. Create file called -> server.js (inside article-server folder)
+3. Install express -> npm install expess
+4. Write below code inside server.js
+	const express = require("express");
+	const app = express();
+	app.listen(8000, () => {
+		console.log("Server is started and listening");
+	});
+
+5. Running NodeJS:
+	In command -> node server.js
+
+6. Copy gitignore file from article-client and paste into article-server folder
+	// Now we are going call API
+	app.get("/", function(request,response) {
+		response.send("Hello Node JS");
+	});
+
+7. You will definitely will get CORS Policy error (because cilent URL is localhost:4200 and
+ 	server url is localhost: 8000 both are different)
+Solution : Install CORS -> npm i cors
+		Write belowcode in server.js file
+
+		const cors = require("cors");
+
+		var corsOptions = {
+		origin: ['http://localhost:4200', 'http://localhost:8000]
+		}
+		app.use(cors(corsOption));
+	
+	
